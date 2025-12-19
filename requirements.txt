@@ -1,0 +1,13 @@
+fastapi==0.115.12
+uvicorn==0.37.0
+starlette==0.46.2
+pydantic==2.11.4
+openai==2.8.1
+httpx==0.28.1
+psycopg2-binary==2.9.9
+langchain==0.3.19
+langchain-community==0.3.18
+pypdf==4.2.0
+python-dotenv==1.0.1
+tqdm==4.67.1
+numpy==2.2.6
