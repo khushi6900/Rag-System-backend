@@ -78,6 +78,7 @@ class RAGSystem:
         Execute RAG query with streaming response
         """
         try:
+            yield f"data: {json.dumps({'status': 'stream_started'})}\n\n"
             # Retrieve relevant documents
             docs = self.vector_store.similarity_search(question, k=k)
 
