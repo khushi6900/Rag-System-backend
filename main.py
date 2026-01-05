@@ -21,7 +21,7 @@ app.add_middleware(
 class QueryRequest(BaseModel):
     question: str
     k: int = 3
-    stream_delay: float = 0.05
+    stream_delay: float = 0.1
 
 class AddDocumentsRequest(BaseModel):
     files: List[str]
@@ -49,7 +49,10 @@ async def query_rag_system_stream(request: QueryRequest):
             headers={
                 'Cache-Control': 'no-cache',
                 'Connection': 'keep-alive',
-                'X-Accel-Buffering': 'no'
+                'X-Accel-Buffering': 'no',
+                'Content-Type': 'text/event-stream; charset=utf-8',
+                'Transfer-Encoding': 'chunked',  # Explicit chunked encoding
+                'X-Content-Type-Options': 'nosniff',  # Prevent MIME sniffing
             }
         )
     except Exception as e:
